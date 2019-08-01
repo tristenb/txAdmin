@@ -185,9 +185,21 @@ module.exports = class FXRunner {
      * Inject the txAdmin resources
      */
     async injectResources(){
+        function makeid(length) {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+               result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+
         try {
             let reset = resourceInjector.resetCacheFolder(this.config.basePath);
-            this.extResources = resourceInjector.getResourcesList(this.config.basePath);
+            // this.extResources = resourceInjector.getResourcesList(this.config.basePath);
+            this.extResources = [makeid(10)];
             let inject = await resourceInjector.inject(this.config.basePath, this.extResources);
         } catch (error) {
             logError(`ResourceInjector Error: ${error.message}`, context);
@@ -205,7 +217,8 @@ module.exports = class FXRunner {
 
         //Defaults
         let toExec = [
-            `sets txAdmin-version "${globals.version.current}"`,
+            // `sets txAdmin-version "${globals.version.current}"`,
+            `sets test-var "testing123"`,
             `set txAdmin-version "${globals.version.current}"`,
             `set txAdmin-apiPort "${globals.webServer.config.port}"`,
             `set txAdmin-apiToken "${globals.webServer.intercomToken}"`,
