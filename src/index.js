@@ -8,6 +8,12 @@ const { dir, log, logOk, logWarn, logError, cleanTerminal } = require('./extras/
 const txAdmin = require('./txAdmin.js');
 
 
+//HACK
+logError("Please don't use this branch.");
+process.exit();
+
+
+
 //==============================================================
 //FIXME: I should be using dependency injection or something
 globals = {

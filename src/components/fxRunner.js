@@ -223,6 +223,7 @@ module.exports = class FXRunner {
             `set txAdmin-apiPort "${globals.webServer.config.port}"`,
             `set txAdmin-apiToken "${globals.webServer.intercomToken}"`,
             `set txAdmin-clientCompatVersion "1.1.0"`
+            //FIXME: seria bom ter um refresh aqui
         ]
 
         //Commands
