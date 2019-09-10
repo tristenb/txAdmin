@@ -1,0 +1,60 @@
+{{include("header")/}}
+
+<div class="text-center mb-4">
+    <h2>Experiment: Player Logging System</h2>
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col-lg-12 col-xl-10">
+        <div class="alert alert-warning text-center" role="alert">
+            {{if(options.expEnabled===false)}}
+            This is an experiment to test the database engine required for a player logging system. <br>
+            If this test works this will be implemented as a core feature of <strong>txAdmin</strong>, as well as a
+            <strong>warn</strong> and <strong>whitelist</strong> system. <br>
+            We cannot guarantee neither its functionality nor the persistence of the database, that's why a player list
+            export feature is provided. <br>
+            <span class="text-danger font-weight-bold">If you understand the implications of the term "experiment" and
+                still want to proceed, click in the button "Enable Experiment".</span> <br>
+            After enabling this experiment a server restart is required. <br>
+            You can disable this anytime you want. <br>
+            <a href="/experiments/players/actions/enable" role="button" class="btn btn-outline-dark mt-3"
+                onclick="alert('WARNING: YOU MUST RESTART YOUR FXSERVER FOR THIS EXPERIMENT TO WORK!')">
+                Enable Experiment</a>
+            {{#else}}
+            This is an experiment to test the database engine required for a player logging system. <br>
+            We cannot guarantee neither its functionality nor the persistence of the database, that's why a player list
+            export feature is provided. <br>
+            <a href="/experiments/players/actions/disable" role="button" class="btn btn-outline-dark mt-3">
+                Disable Experiment</a>
+            &nbsp;
+
+            <!--
+            <a href="/experiments/bans/actions/export" role="button" class="btn btn-outline-dark mt-3">
+                Export Bans</a>
+            -->
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+
+{{if(options.expEnabled)}}
+
+    <div class="col-lg-10 col-xl-6">
+        <div class="card card-accent-info">
+            <div class="card-header font-weight-bold">Ban List:</div>
+            <div class="card-body">
+
+                {{if(options.log.length === 0)}}
+                <li>No bans recorded.</li>
+                {{#else}}
+                {{log|safe}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+
+{{include("footer")/}}

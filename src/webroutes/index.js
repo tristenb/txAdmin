@@ -35,5 +35,12 @@ exports.experiments = {
     bans: {
         get: require('./experiments/bans/get'),
         actions: require('./experiments/bans/actions'),
+    },
+
+    players: {
+        get: require('./experiments/players/get'),
+        actions: require('./experiments/players/actions'),
     }
 }
+
+

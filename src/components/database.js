@@ -34,6 +34,10 @@ module.exports = class Database {
                 bans: {
                     enabled: false,
                     banList: []
+                },
+                players: {
+                    enabled: false,
+                    playerList: []
                 }
             }
         }).write()

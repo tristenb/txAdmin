@@ -94,6 +94,16 @@ module.exports = router = (config) =>{
             handleRouteError(res, req, 'Experiments-Bans-Actions', err);
         });
     });
+    router.all('/experiments/players', requestAuth('web'), async (req, res) => {
+        await webRoutes.experiments.players.get(res, req).catch((err) => {
+            handleRouteError(res, req, 'Experiments-Players-Get', err);
+        });
+    });
+    router.all('/experiments/players/actions/:action', requestAuth('web'), async (req, res) => {
+        await webRoutes.experiments.players.actions(res, req).catch((err) => {
+            handleRouteError(res, req, 'Experiments-Players-Actions', err);
+        });
+    });
 
 
     //Control routes
