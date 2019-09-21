@@ -20,9 +20,6 @@ const handleError = async (res, req, error)=>{
  * @param {object} req
  */
 module.exports = async function action(res, req) {
-	let dbo = globals.database.getDB();
-	let players = dbo.get("experiements.players.playerList").value();
-
     //Check permissions
     if(!webUtils.checkPermission(req, 'all', context)){
         let out = await webUtils.renderMasterView('basic/generic', req.session, {message: `You don't have permission to view this page.`});
@@ -72,6 +69,7 @@ module.exports = async function action(res, req) {
  * @param {array} playerList
 */
 function processLog(playerList){
+	console.log(playerList);
     if(!Array.isArray(playerList)) return false;
 
     let out = '';
